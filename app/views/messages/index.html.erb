@@ -24,7 +24,8 @@
     過去ログ
   </div>
   <div class="panel-body">
-    <% @messages.each do |message| %>
+      <% @messages.each do |message| %>
+
       <span class="label label-info"><%= message.name %></span>
       <%= message.body %>
       <br>
@@ -34,6 +35,18 @@
 
 
 <%= form_for(Message.new) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
 
   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>名前:<br>
   <%= f.text_field :name, :size=>"60" %>
@@ -44,10 +57,8 @@
   <%= f.submit class: "btn btn-sm btn-primary" %>
 <% end %>
 
-
   </div>
   
   
 </body>
 </html>
-
