@@ -1,0 +1,22 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+
+  <span class="glyphicon glyphicon-user" aria-hidden="true"></span>名前:<br>
+  <%= f.text_field :name, :size=>"60" %>
+  <br> <br>
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>コメント:<br>
+  <%= f.text_area :body, :size=>"60", :rows=>"10" %><br>
+
+  <%= f.submit class: "btn btn-sm btn-primary" %>
+<% end %>

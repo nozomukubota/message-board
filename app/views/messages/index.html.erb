@@ -1,15 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>永遠に消えない掲示板</title>
-  <!-- 下田注：ダイアログが２回原因は下記です。
-  下記application.html.erbに記載されてるのでいらないです。 -->
-
-</head>
-<body>
     <nav class="navbar">
-    <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">永遠に消すことの出来ない恐怖の掲示板。</a>
       </div>
@@ -26,7 +15,7 @@
       <% @messages.each do |message| %>
       <span class="label label-info"><%= message.name %></span>
       <%= message.body %>
-      (<%= link_to "edit",edit_message_path(message) %>
+      (<%= link_to "編集",edit_message_path(message) %>
        <%= link_to "削除",message,method: :delete,data:{confirm:'削除してもよろしいでしょうか？'} %>)
       <br>
     <% end %>
@@ -37,7 +26,3 @@
   <%=render 'form' %>
 
   </div>
-  
-  
-</body>
-</html>
